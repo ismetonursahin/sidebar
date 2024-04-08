@@ -1,0 +1,256 @@
+@import "https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap";
+
+* {
+  font-family: "Exo 2", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 0;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background-color: #f2613f;
+}
+
+body {
+  padding: 10px;
+}
+
+.sidebar {
+  width: 300px;
+  height: 100%;
+  background-color: rgb(11, 10, 15);
+  border-radius: 14px;
+  padding: 0 14px 14px;
+  color: white;
+  position: relative;
+  transition: 230ms width;
+  display: flex;
+  flex-direction: column;
+  input[name="open"] {
+    display: none;
+  }
+
+  .toggle {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(32, 117, 170);
+    color: white;
+    position: absolute;
+    top: 12px;
+    left: 100%;
+    translate: -50%;
+    svg {
+      rotate: 180deg;
+      transition: 250ms rotate;
+    }
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    font-weight: 600;
+    gap: 10px;
+    svg {
+      height: 40px;
+      width: 40px;
+      color: white;
+    }
+  }
+
+  &:has(input[name="open"]:checked) {
+    width: 68px;
+    .toggle {
+      width: 26px;
+      height: 26px;
+      svg {
+        rotate: 0deg;
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .user {
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgb(95, 41, 222);
+      }
+    }
+
+    .search input {
+      padding-right: 0;
+    }
+
+    .search label {
+      display: block;
+    }
+
+    .menu .icons {
+      &:hover::before,
+      &:hover::after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  .name {
+    font-size: 16px;
+  }
+
+  .email {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.553);
+  }
+  .img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(95, 41, 222);
+  }
+  button {
+    margin-left: auto;
+    background-color: transparent;
+    margin-right: -10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(249, 55, 81);
+    width: 20px;
+    height: 20px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.hidden {
+  opacity: 1;
+  visibility: visible;
+  transition: 230ms all;
+  white-space: nowrap;
+}
+
+.search {
+  position: relative;
+
+  label {
+    position: absolute;
+    width: 40px;
+    top: 0;
+    left: 0;
+    height: 40px;
+    background-color: transparent;
+    z-index: 1;
+    display: none;
+  }
+  input {
+    width: 100%;
+    height: 40px;
+    background-color: #2e2d2d;
+    border-radius: 4px;
+    padding: 0 12px 0 40px;
+    color: white;
+    outline: none;
+    font-size: 14px;
+  }
+
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      color: white;
+    }
+  }
+}
+
+.menu {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  a {
+    position: relative;
+    display: flex;
+    height: 40px;
+    border-radius: 4px;
+    align-items: center;
+    margin-top: 5px;
+    color: white;
+
+    &:hover {
+      background-color: #2e2d2d;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+      &::before {
+        content: attr(title);
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        translate: 20px -50%;
+        background-color: #333;
+        padding: 3px 5px;
+        font-size: 12px;
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+      }
+      &::after {
+        content: "";
+        border: 4px solid transparent;
+        border-right-color: #2e2d2d;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        translate: 14px -50%;
+        opacity: 0;
+        visibility: hidden;
+      }
+      svg {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+}
